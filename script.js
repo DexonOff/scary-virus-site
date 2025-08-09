@@ -1,6 +1,4 @@
-<script>
 document.addEventListener("DOMContentLoaded", function () {
-    // 🌕 Сразу вход в полноэкранный режим
     function goFullScreen() {
         if (document.documentElement.requestFullscreen) {
             document.documentElement.requestFullscreen();
@@ -11,22 +9,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // 🎵 Страшная музыка
     function playScaryMusic() {
-        let audio = new Audio("scary.mp3"); // Файл — тёмная музыка
+        let audio = new Audio("scary.mp3");
         audio.loop = true;
         audio.volume = 1.0;
         audio.play().catch(() => console.log("Автовоспроизведение заблокировано"));
     }
 
-    // 💢 Дрожание окна
     function shakeScreen() {
         setInterval(() => {
             window.moveBy(Math.random() * 8 - 4, Math.random() * 8 - 4);
         }, 50);
     }
 
-    // 🔦 Вспышки красного
     function redFlashes() {
         setInterval(() => {
             document.body.style.backgroundColor = "red";
@@ -36,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 3000);
     }
 
-    // 🌀 Искажения экрана
     function glitchEffect() {
         document.body.style.transition = "filter 0.1s";
         setInterval(() => {
@@ -44,7 +38,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 100);
     }
 
-    // 👀 Красные глаза
     function spawnEyes() {
         setInterval(() => {
             let eye = document.createElement("div");
@@ -61,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 1500);
     }
 
-    // 🐍 Ползущий глитч-текст
     function glitchText() {
         let glitch = document.createElement("div");
         glitch.innerText = "YOU CAN'T ESCAPE";
@@ -80,10 +72,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 100);
     }
 
-    // 🚫 Предупреждение при закрытии
-    window.onbeforeunload = () => "Ты уверен, что хочешь уйти?";
-
-    // 🔵 Фейковый BSOD
     function fakeBSOD() {
         setTimeout(() => {
             let bsod = document.createElement("div");
@@ -104,14 +92,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 10000);
     }
 
-    // 🚀 Запуск всех эффектов
-    goFullScreen();
-    playScaryMusic();
-    shakeScreen();
-    redFlashes();
-    glitchEffect();
-    spawnEyes();
-    glitchText();
-    fakeBSOD();
+    // Чтобы всё сработало и звук не заблокировался
+    document.body.addEventListener("click", () => {
+        goFullScreen();
+        playScaryMusic();
+        shakeScreen();
+        redFlashes();
+        glitchEffect();
+        spawnEyes();
+        glitchText();
+        fakeBSOD();
+    }, { once: true });
 });
-</script>
