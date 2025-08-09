@@ -1,6 +1,6 @@
 body {
-    background-color: red;
-    color: black;
+    background-color: black; /* Базовый тёмный фон */
+    color: red;
     font-size: 50px;
     font-weight: bold;
     display: flex;
@@ -10,7 +10,35 @@ body {
     margin: 0;
     overflow: hidden;
     user-select: none;
+    animation: bgPulse 3s infinite alternate;
 }
+
 .message {
     text-shadow: 5px 5px 10px black;
+    animation: textShake 0.2s infinite, glitch 1s infinite;
+}
+
+/* Плавное мигание фона */
+@keyframes bgPulse {
+    0% { background-color: black; }
+    50% { background-color: darkred; }
+    100% { background-color: black; }
+}
+
+/* Дрожание текста */
+@keyframes textShake {
+    0% { transform: translate(0, 0) rotate(0); }
+    25% { transform: translate(-2px, 2px) rotate(-1deg); }
+    50% { transform: translate(2px, -2px) rotate(1deg); }
+    75% { transform: translate(-1px, 1px) rotate(0.5deg); }
+    100% { transform: translate(0, 0) rotate(0); }
+}
+
+/* Глитч-эффект */
+@keyframes glitch {
+    0% { text-shadow: 2px 2px red, -2px -2px blue; }
+    25% { text-shadow: -2px 2px lime, 2px -2px purple; }
+    50% { text-shadow: 3px -3px yellow, -3px 3px cyan; }
+    75% { text-shadow: -2px -2px orange, 2px 2px pink; }
+    100% { text-shadow: 2px 2px red, -2px -2px blue; }
 }
